@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/07 21:21:54 by lkoc              #+#    #+#             */
+/*   Updated: 2024/10/07 21:21:54 by lkoc             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pbook.hpp"
 
 int main()
@@ -38,19 +50,41 @@ int main()
 	}
 }
 
+void print_to_10_chars(std::string str)
+{
+	int x = str.length();
+
+	if (str.length() > 10)
+	{
+		std::cout << str.substr(0, 9) << ".";
+	}
+	else
+	{
+		for (int i = 0; i < 10 - x; i++)
+		{
+			std::cout << " ";
+		}
+		std::cout << str;
+	}
+}
 
 void display(Contact contacts[], int size)
 {
-    std::cout << "Index | First name | Last name | Nickname\n";
+    std::cout << "     Index|First name| Last name|  Nickname|\n";
+	std::cout << "--------------------------------------------\n";
     for (int i = 0; i < size; i++)
     {
-        if (i >= 0 && i < 8) // Sprawdzaj tylko kontakty z indeksem różnym od 0
+        if (i-- >= 0 && i < 8)
         {
-            std::cout << contacts[i].index << " | ";
-            std::cout << contacts[i].first_name << " | ";
-            std::cout << contacts[i].last_name << " | ";
-            std::cout << contacts[i].nickname << "\n";
-        }
+            std::cout << "         " << i;
+			std::cout << "|";
+			print_to_10_chars(contacts[i].first_name);
+			std::cout << "|";
+			print_to_10_chars(contacts[i].last_name);
+			std::cout << "|";
+			print_to_10_chars(contacts[i].nickname);
+			std::cout << "|\n";
+		}
     }
 }
 
@@ -64,6 +98,7 @@ void search_contact(Contact contacts[], int size)
 	std::cin.ignore();
 	if (id >= 0 && id <= size)
 	{
+		id--;
 		std::cout << "First name: " << contacts[id].first_name << "\n";
 		std::cout << "Last name: " << contacts[id].last_name << "\n";
 		std::cout << "Nickname: " << contacts[id].nickname << "\n";
