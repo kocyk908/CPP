@@ -29,10 +29,9 @@ $(TARGET): $(OBJS)
 
 # Reguła czyszcząca pliki obiektowe i binarne
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(OBJS)
 
-# Reguła czyszcząca wszystkie tymczasowe pliki
-clean-all: clean
-	rm -f *~ *.gch
+fclean:
+	rm -f $(OBJS) $(TARGET)
 
 .PHONY: all clean clean-all
