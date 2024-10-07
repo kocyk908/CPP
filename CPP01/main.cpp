@@ -20,7 +20,12 @@ int main()
 		}
 		else if (command == "SEARCH")
 		{
-			search_contact(contacts, i);
+			if (i == 0)
+			{
+				std::cout << "No contacts added yet. Please add a contact first.\n";
+			}
+			else
+				search_contact(contacts, i);
 		}
 		else if (command == "EXIT")
 		{
@@ -51,7 +56,23 @@ void display(Contact contacts[], int size)
 
 void search_contact(Contact contacts[], int size)
 {
-	std::cout << size << std::endl;
+	int id;
+
 	display(contacts, size);
+	std::cout << "Which one to display?\n";
+	std::cin >> id;
+	std::cin.ignore();
+	if (id >= 0 && id <= size)
+	{
+		std::cout << "First name: " << contacts[id].first_name << "\n";
+		std::cout << "Last name: " << contacts[id].last_name << "\n";
+		std::cout << "Nickname: " << contacts[id].nickname << "\n";
+		std::cout << "Phone number: " << contacts[id].phone_number << "\n";
+		std::cout << "Secret: " << contacts[id].secret << "\n\n";
+	}
+	else
+	{
+		std::cout << "Invalid index. Please try again.\n";
+	}
 }
 //void exit();
