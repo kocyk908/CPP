@@ -1,36 +1,38 @@
-# Makefile for megaphone.cpp
+# Nazwa programu
+TARGET = phonebook
 
-# Compiler
+# Kompilator
 CXX = g++
 
-# Compiler flags
+# Flagi kompilatora
 CXXFLAGS = -Wall -Wextra -std=c++11
 
-# Target executable
-TARGET = PhoneBook
+# Pliki nagłówkowe
+HEADERS = pbook.hpp
 
-# Source files
-SRCS = main.cpp 
+# Pliki źródłowe
+SRCS = main.cpp add.cpp utils.cpp
 
-# Object files
+# Pliki obiektowe (po kompilacji)
 OBJS = $(SRCS:.cpp=.o)
 
-# Default target
+# Reguła domyślna
 all: $(TARGET)
 
-# Link object files to create the executable
+# Reguła kompilacji pliku wykonywalnego
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
 
-# Compile source files to object files
-%.o: %.cpp
+# Reguła kompilacji plików obiektowych
+%.o: %.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Clean up build files
+# Reguła czyszcząca pliki obiektowe i binarne
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(TARGET)
 
-fclean:
-	rm -f $(TARGET) $(OBJS)
+# Reguła czyszcząca wszystkie tymczasowe pliki
+clean-all: clean
+	rm -f *~ *.gch
 
-.PHONY: all clean
+.PHONY: all clean clean-all

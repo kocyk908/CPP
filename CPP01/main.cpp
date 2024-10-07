@@ -1,88 +1,57 @@
-#include <iostream>
-
-class Contact
-{
-public:
-	std::string first_name;
-	std::string last_name;
-	std::string phone_number;
-	std::string secret;
-};
-
-void add_contact(Contact contacts[], int i);
+#include "pbook.hpp"
 
 int main()
 {
-	int i = 1;
-	Contact contacts[8]; 
-	std::string command;
-	std::cout << "Welcome to the PhoneBook!\n";
-	std::cout << "Please print option from listed below:\n";
-	std::cout << "ADD | SEARCH | EXIT\n";
-	std::getline(std::cin, command);
-	if (command == "ADD")
-	{
-		add_contact(contacts, i);
-		std::cout << contacts[i].first_name;
-		i++;
-	}
-	else if (command == "SEARCH")
-	{
-		//search_contact();
-	}
-	else if (command == "EXIT")
-	{
-		std::cout << 3;
-		exit(1);
-	}
-	else
-	{
-		std::cout << "Invalid input. Please try again.\n";
-	}
-}
-
-std::string add_input(std::string str)
-{
+	int	j = 0;
 	int i = 0;
-	std::getline(std::cin, str);
-	while (str.empty())
+	Contact contacts[8]; 
+	while (1)
 	{
-		if (i == 0)
+		std::string command;
+		if (j++ == 0)
+			std::cout << "Welcome to the PhoneBook! ";
+		std::cout << "Choose one of the listed options:\n";
+		std::cout << "ADD | SEARCH | EXIT\n";
+		std::getline(std::cin, command);
+		if (command == "ADD")
 		{
-			std::cout << "You can't leave blank field. Please try again: \n";
+			add_contact(contacts, i);
 			i++;
 		}
-		std::getline(std::cin, str);
+		else if (command == "SEARCH")
+		{
+			search_contact(contacts, i);
+		}
+		else if (command == "EXIT")
+		{
+			exit(1);
+		}
+		else
+		{
+			std::cout << "Invalid input. Please try again.\n";
+		}
 	}
-	return (str);
-
 }
 
-void add_contact(Contact contacts[], int i)
+
+void display(Contact contacts[], int size)
 {
-	
-	if (i == 8)
-	{
-		i = 1;
-	}
-	std::string first_name;
-	std::string last_name;
-	std::string phone_number;
-	std::string secret;
-	std::cout << "Please enter first name: ";
-	first_name = add_input(first_name);
-	std::cout << "Please enter last name: ";
-	last_name = add_input(last_name);
-	std::cout << "Please enter phone number: ";
-	phone_number = add_input(phone_number);
-	std::cout << "Please enter secret: ";
-	secret = add_input(secret);
-
-	contacts[i].first_name = first_name;
-	contacts[i].last_name = last_name;
-	contacts[i].phone_number = phone_number;
-	contacts[i].secret = secret;
-	std::cout << "Contact added successfully!\n";
+    std::cout << "Index | First name | Last name | Nickname\n";
+    for (int i = 0; i < size; i++)
+    {
+        if (i >= 0 && i < 8) // Sprawdzaj tylko kontakty z indeksem różnym od 0
+        {
+            std::cout << contacts[i].index << " | ";
+            std::cout << contacts[i].first_name << " | ";
+            std::cout << contacts[i].last_name << " | ";
+            std::cout << contacts[i].nickname << "\n";
+        }
+    }
 }
-//void search_contact();
+
+void search_contact(Contact contacts[], int size)
+{
+	std::cout << size << std::endl;
+	display(contacts, size);
+}
 //void exit();
