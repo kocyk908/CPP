@@ -28,7 +28,6 @@ int main()
 		if (command == "ADD")
 		{
 			add_contact(contacts, i);
-			i++;
 		}
 		else if (command == "SEARCH")
 		{
@@ -37,7 +36,10 @@ int main()
 				std::cout << "No contacts added yet. Please add a contact first.\n";
 			}
 			else
+			{
+				display(contacts, i);
 				search_contact(contacts, i);
+			}
 		}
 		else if (command == "EXIT")
 		{
@@ -67,47 +69,3 @@ void print_to_10_chars(std::string str)
 		std::cout << str;
 	}
 }
-
-void display(Contact contacts[], int size)
-{
-    std::cout << "     Index|First name| Last name|  Nickname|\n";
-	std::cout << "--------------------------------------------\n";
-    for (int i = 0; i < size; i++)
-    {
-        if (i-- >= 0 && i < 8)
-        {
-            std::cout << "         " << i;
-			std::cout << "|";
-			print_to_10_chars(contacts[i].first_name);
-			std::cout << "|";
-			print_to_10_chars(contacts[i].last_name);
-			std::cout << "|";
-			print_to_10_chars(contacts[i].nickname);
-			std::cout << "|\n";
-		}
-    }
-}
-
-void search_contact(Contact contacts[], int size)
-{
-	int id;
-
-	display(contacts, size);
-	std::cout << "Which one to display?\n";
-	std::cin >> id;
-	std::cin.ignore();
-	if (id >= 0 && id <= size)
-	{
-		id--;
-		std::cout << "First name: " << contacts[id].first_name << "\n";
-		std::cout << "Last name: " << contacts[id].last_name << "\n";
-		std::cout << "Nickname: " << contacts[id].nickname << "\n";
-		std::cout << "Phone number: " << contacts[id].phone_number << "\n";
-		std::cout << "Secret: " << contacts[id].secret << "\n\n";
-	}
-	else
-	{
-		std::cout << "Invalid index. Please try again.\n";
-	}
-}
-//void exit();

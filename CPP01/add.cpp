@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   add.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 21:21:58 by lkoc              #+#    #+#             */
-/*   Updated: 2024/10/07 21:54:02 by lkoc             ###   ########.fr       */
+/*   Updated: 2024/10/08 20:57:59 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pbook.hpp"
 
-void add_contact(Contact contacts[], int& count)
+void add_contact(Contact contacts[], int& i)
 {
-    // Jeśli mamy już 8 kontaktów, przesuwamy istniejące o jedno miejsce w dół
-    if (count >= 8)
+    if (i >= 8)
     {
         for (int j = 7; j > 0; j--)
         {
@@ -25,11 +24,11 @@ void add_contact(Contact contacts[], int& count)
     else
     {
         // Przesuwamy istniejące kontakty w dół, jeśli jeszcze nie osiągnęliśmy limitu
-        for (int j = count; j > 0; j--)
+        for (int j = i; j > 0; j--)
         {
             contacts[j] = contacts[j - 1];  // Przesuwamy każdy kontakt o jedno miejsce w dół
         }
-        count++;
+        i++;
     }
 
     // Dodajemy nowy kontakt na pozycję 0
