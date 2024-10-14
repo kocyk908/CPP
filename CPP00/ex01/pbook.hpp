@@ -26,14 +26,12 @@ class Contact
         std::string secret;
 
     public:
-        // Settery
         void set_first_name(std::string firstname);
         void set_last_name(std::string lastname);
         void set_nickname(std::string nickname);
         void set_secret(std::string secret);
         void set_phone_number(std::string number);
 
-        // Gettery
         const std::string& get_first_name() const;
         const std::string& get_last_name() const;
         const std::string& get_nickname() const;
