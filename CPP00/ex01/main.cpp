@@ -14,42 +14,33 @@
 
 int main()
 {
-	int	j = 0;
-	int i = 0;
-	Contact contacts[8]; 
-	while (1)
-	{
-		std::string command;
-		if (j++ == 0)
-			std::cout << "Welcome to the PhoneBook! ";
-		std::cout << "Choose one of the listed options:\n";
-		std::cout << "ADD | SEARCH | EXIT\n";
-		std::getline(std::cin, command);
-		if (command == "ADD")
-		{
-			add_contact(contacts, i);
-		}
-		else if (command == "SEARCH")
-		{
-			if (i == 0)
-			{
-				std::cout << "No contacts added yet. Please add a contact first.\n";
-			}
-			else
-			{
-				display(contacts, i);
-				search_contact(contacts, i);
-			}
-		}
-		else if (command == "EXIT")
-		{
-			exit(1);
-		}
-		else
-		{
-			std::cout << "Invalid input. Please try again.\n";
-		}
-	}
+    PhoneBook phonebook;
+    std::string command;
+
+    while (true)
+    {
+        std::cout << "Welcome to the PhoneBook! Choose an option: ADD | SEARCH | EXIT\n";
+        std::getline(std::cin, command);
+
+        if (command == "ADD")
+        {
+            phonebook.add_contact();
+        }
+        else if (command == "SEARCH")
+        {
+            phonebook.search_contact();
+        }
+        else if (command == "EXIT")
+        {
+            break;
+        }
+        else
+        {
+            std::cout << "Invalid command. Please try again.\n";
+        }
+    }
+
+    return 0;
 }
 
 void print_to_10_chars(std::string str)

@@ -6,7 +6,7 @@
 /*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 21:21:56 by lkoc              #+#    #+#             */
-/*   Updated: 2024/10/14 19:26:57 by lkoc             ###   ########.fr       */
+/*   Updated: 2024/10/14 19:35:40 by lkoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,18 @@ void search_contact(Contact contacts[], int i);
 void print_to_10_chars(std::string str);
 void display(Contact contacts[], int size);
 void search_contact(Contact contacts[], int size);
+
+class PhoneBook
+{
+    private:
+        Contact contacts[8];  // Tablica maksymalnie 8 kontaktów
+        int contact_count;    // Licznik kontaktów, kontroluje dodawanie i zastępowanie
+
+    public:
+        PhoneBook();  // Konstruktor
+        void add_contact();  // Dodawanie nowego kontaktu
+        void search_contact() const;  // Przeszukiwanie i wyświetlanie kontaktów
+};
+
 
 #endif
