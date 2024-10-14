@@ -1,36 +1,23 @@
-# Makefile for megaphone.cpp
+SRC = megaphone.cpp
 
-# Compiler
-CXX = g++
+OBJ = $(SRC:.cpp=.o)
 
-# Compiler flags
-CXXFLAGS = -Wall -Wextra -std=c++11
+NAME = megaphone
 
-# Target executable
-TARGET = megaphone
+CC = c++ -Wall -Wextra -Werror -std=c++98
 
-# Source files
-SRCS = megaphone.cpp
+all: $(NAME)
 
-# Object files
-OBJS = $(SRCS:.cpp=.o)
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
 
-# Default target
-all: $(TARGET)
-
-# Link object files to create the executable
-$(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
-
-# Compile source files to object files
 %.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CC) -c $< -o $@
 
-# Clean up build files
 clean:
-	rm -f $(OBJS)
+	rm -rf $(OBJ)
 
-fclean:
-	rm -f $(TARGET) $(OBJS)
+fclean: clean
+	rm -rf $(NAME)
 
-.PHONY: all clean
+re: fclean all
