@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 21:21:58 by lkoc              #+#    #+#             */
-/*   Updated: 2024/10/08 20:57:59 by marvin           ###   ########.fr       */
+/*   Updated: 2024/10/14 19:06:21 by lkoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,26 @@
 
 void add_contact(Contact contacts[], int& i)
 {
+    // Sprawdzamy, czy liczba kontaktów osiągnęła maksymalny limit
     if (i >= 8)
     {
+        // Przesuwamy istniejące kontakty w dół, zastępując najstarszy
         for (int j = 7; j > 0; j--)
         {
-            contacts[j] = contacts[j - 1];  // Przesuwamy każdy kontakt o jedno miejsce w dół
+            contacts[j] = contacts[j - 1];
         }
     }
     else
     {
-        // Przesuwamy istniejące kontakty w dół, jeśli jeszcze nie osiągnęliśmy limitu
         for (int j = i; j > 0; j--)
         {
-            contacts[j] = contacts[j - 1];  // Przesuwamy każdy kontakt o jedno miejsce w dół
+            contacts[j] = contacts[j - 1];
         }
         i++;
     }
 
-    // Dodajemy nowy kontakt na pozycję 0
-    std::string first_name;
-    std::string last_name;
-    std::string nickname;
-    std::string phone_number;
-    std::string secret;
+    // Pobieramy dane użytkownika
+    std::string first_name, last_name, nickname, phone_number, secret;
 
     std::cout << "Please enter first name: ";
     first_name = add_input(first_name);
@@ -53,11 +50,12 @@ void add_contact(Contact contacts[], int& i)
     std::cout << "Please enter secret: ";
     secret = add_input(secret);
 
-    contacts[0].first_name = first_name;
-    contacts[0].last_name = last_name;
-    contacts[0].nickname = nickname;
-    contacts[0].phone_number = phone_number;
-    contacts[0].secret = secret;
+    // Przypisanie wartości za pomocą setterów
+    contacts[0].set_first_name(first_name);
+    contacts[0].set_last_name(last_name);
+    contacts[0].set_nickname(nickname);
+    contacts[0].set_phone_number(phone_number);
+    contacts[0].set_secret(secret);
 
     std::cout << "Contact added successfully!\n\n";
 }

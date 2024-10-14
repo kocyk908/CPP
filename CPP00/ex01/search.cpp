@@ -6,7 +6,7 @@
 /*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:57:54 by lkoc              #+#    #+#             */
-/*   Updated: 2024/10/14 18:57:54 by lkoc             ###   ########.fr       */
+/*   Updated: 2024/10/14 19:28:27 by lkoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void display(Contact contacts[], int size)
         {
 			std::cout << "         " << i + 1;
 			std::cout << "|";
-			print_to_10_chars(contacts[i].first_name);
+			print_to_10_chars(contacts[i].get_first_name());
 			std::cout << "|";
-			print_to_10_chars(contacts[i].last_name);
+			print_to_10_chars(contacts[i].get_last_name());
 			std::cout << "|";
-			print_to_10_chars(contacts[i].nickname);
+			print_to_10_chars(contacts[i].get_nickname());
 			std::cout << "|\n";
 		}
     }
@@ -34,21 +34,22 @@ void display(Contact contacts[], int size)
 
 void search_contact(Contact contacts[], int size)
 {
-	int id;
+    int id;
 
-	std::cout << "Which one to display?\n";
-	std::cin >> id;
-	std::cin.ignore();
-	if (id >= 1 && id <= size)
-	{
-		std::cout << "First name: " << contacts[id - 1].first_name << "\n";
-		std::cout << "Last name: " << contacts[id - 1].last_name << "\n";
-		std::cout << "Nickname: " << contacts[id - 1].nickname << "\n";
-		std::cout << "Phone number: " << contacts[id - 1].phone_number << "\n";
-		std::cout << "Secret: " << contacts[id - 1].secret << "\n\n";
-	}
-	else
-	{
-		std::cout << "Invalid index. Please try again.\n";
-	}
+    std::cout << "Which one to display?\n";
+    std::cin >> id;
+    std::cin.ignore();
+    if (id >= 1 && id <= size)
+    {
+		std::cout << "Displaying contact with index " << id << ":\n";
+        std::cout << "First name: " << contacts[id - 1].get_first_name() << "\n";
+        std::cout << "Last name: " << contacts[id - 1].get_last_name() << "\n";
+        std::cout << "Nickname: " << contacts[id - 1].get_nickname() << "\n";
+        std::cout << "Phone number: " << contacts[id - 1].get_phone_number() << "\n";
+        std::cout << "Secret: " << contacts[id - 1].get_secret() << "\n\n";
+    }
+    else
+    {
+        std::cout << "Invalid index. Please try again.\n";
+    }
 }

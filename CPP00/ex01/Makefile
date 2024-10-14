@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -std=c++11
 
 HEADERS = pbook.hpp
 
-SRCS = main.cpp add.cpp utils.cpp search.cpp
+SRCS = main.cpp add.cpp utils.cpp search.cpp getset.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
