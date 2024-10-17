@@ -45,18 +45,18 @@ int main()
 
 void print_to_10_chars(std::string str)
 {
-	int x = str.length();
+    int x = str.length();
 
-	if (str.length() > 10)
-	{
-		std::cout << str.substr(0, 9) << ".";
-	}
-	else
-	{
-		for (int i = 0; i < 10 - x; i++)
-		{
-			std::cout << " ";
-		}
-		std::cout << str;
-	}
+    if (str.length() > 10)
+    {
+        std::cout << str.substr(0, 9) << ".";
+    }
+    else
+    {
+        for (int i = 0; i < 10 - x; i++)
+        {
+            std::cout << " ";
+        }
+        std::cout << str;
+    }
 }

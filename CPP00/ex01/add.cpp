@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   add.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 21:21:58 by lkoc              #+#    #+#             */
-/*   Updated: 2024/10/14 19:45:20 by lkoc             ###   ########.fr       */
+/*   Updated: 2024/10/17 23:38:31 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pbook.hpp"
 
-void add_contact(Contact contacts[], int& i)
+PhoneBook::PhoneBook() : contact_count(0) {}
+
+void PhoneBook::add_contact()
 {
-    // Sprawdzamy, czy liczba kontaktów osiągnęła maksymalny limit
-    if (i >= 8)
+    if (contact_count >= 8)
     {
-        // Przesuwamy istniejące kontakty w dół, zastępując najstarszy
         for (int j = 7; j > 0; j--)
         {
             contacts[j] = contacts[j - 1];
@@ -25,14 +25,13 @@ void add_contact(Contact contacts[], int& i)
     }
     else
     {
-        for (int j = i; j > 0; j--)
+        for (int j = contact_count; j > 0; j--)
         {
             contacts[j] = contacts[j - 1];
         }
-        i++;
+        contact_count++;
     }
 
-    // Pobieramy dane użytkownika
     std::string first_name, last_name, nickname, phone_number, secret;
 
     std::cout << "Please enter first name: ";
@@ -50,7 +49,6 @@ void add_contact(Contact contacts[], int& i)
     std::cout << "Please enter secret: ";
     secret = add_input(secret);
 
-    // Przypisanie wartości za pomocą setterów
     contacts[0].set_first_name(first_name);
     contacts[0].set_last_name(last_name);
     contacts[0].set_nickname(nickname);
