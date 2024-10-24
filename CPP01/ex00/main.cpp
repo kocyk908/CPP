@@ -17,12 +17,12 @@ void	randomChump(std::string name);
 
 int main(void)
 {
-	std::cout << "Creating a new zombie with 'newZombie'" << std::endl;
-	Zombie* OneZombie = newZombie("FirstZombie");
-	heapZombie->announce();
-	delete heapZombie;
+	std::cout << "Creating a new zombie on HEAP with 'newZombie'" << std::endl;
+	Zombie* HeapZombie = newZombie("FirstZombie");
+	HeapZombie->announce();
+	delete HeapZombie;
 
-	std::cout << "Creating a new zombie with 'randomChump'" << std::endl;
+	std::cout << "Creating a new zombie on STACK with 'randomChump'" << std::endl;
 	randomChump("RandomZombie");
 	return (0);
 }
