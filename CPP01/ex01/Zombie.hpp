@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:55:18 by lkoc              #+#    #+#             */
-/*   Updated: 2024/10/24 19:12:23 by lkoc             ###   ########.fr       */
+/*   Updated: 2024/10/26 11:09:11 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Zombie
 		Zombie();
 		~Zombie();
 		void setName(std::string name);
-		void announce();
+		void announce(int i);
 };
 
 Zombie* zombieHorde(int N, std::string name);
