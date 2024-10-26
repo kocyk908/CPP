@@ -1,3 +1,1 @@
-potrzeba zrobić żeby nadpisywało poprawnie jak jest już 8 kontaktów
-
-potrzeba zrobić gdy odstępy jak jest tabela
+Projekt dotyczący pierwszych zmagań z językiem C++ na Akademii programowania 42 Warsaw. Projekt zawiera 5 modułów z zestawem zadań w każdym.
