@@ -1,6 +1,6 @@
-NAME = harl
+SRC = main.cpp
 
-SRC = Harl.cpp main.cpp
+NAME = main
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -10,9 +10,6 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
-
-%.o: %.cpp
-	$(CC) -c $< -o $@
 
 clean:
 	rm -rf $(OBJ)

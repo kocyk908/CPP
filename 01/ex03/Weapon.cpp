@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: babreton <babreton@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 18:55:13 by lkoc              #+#    #+#             */
-/*   Updated: 2024/10/26 11:10:50 by marvin           ###   ########.fr       */
+/*   Created: 2023/08/15 11:45:27 by babreton          #+#    #+#             */
+/*   Updated: 2023/08/15 13:39:48 by babreton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
 
-int main()
-{
-	//input
-	int N = 10;
+Weapon::Weapon() {
+}
 
- 	Zombie* horde = zombieHorde(N, "Zombie");
-	if (horde)
-	{
-		for (int i = 0; i < N; i++)
-			horde[i].announce(i);
-		delete[] horde;
-	}
-	return (0);
+Weapon::Weapon(str type) {
+	this->type = type;
+}
+
+Weapon::~Weapon() {
+	
+}
+
+const str	&Weapon::getType() const {
+	return this->type;
+}
+
+
+void	Weapon::setType(str ntype) {
+	this->type = ntype;
 }

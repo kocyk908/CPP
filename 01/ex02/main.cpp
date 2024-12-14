@@ -5,24 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 20:39:25 by lkoc              #+#    #+#             */
-/*   Updated: 2024/10/21 20:45:01 by lkoc             ###   ########.fr       */
+/*   Created: 2023/08/15 11:28:31 by babreton          #+#    #+#             */
+/*   Updated: 2024/12/14 14:15:18 by lkoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <iostream>
+#include <string>
 
-Zombie*	newZombie(std::string name);
-void	randomChump(std::string name);
-
-int main(void)
+int main()
 {
-	std::cout << "Creating a new zombie on HEAP with 'newZombie'" << std::endl;
-	Zombie* HeapZombie = newZombie("FirstZombie");
-	HeapZombie->announce();
-	delete HeapZombie;
+	std::string hello = "HI THIS IS BRAIN";
 
-	std::cout << "Creating a new zombie on STACK with 'randomChump'" << std::endl;
-	randomChump("RandomZombie");
+	std::string *ptr = &hello;
+	std::string &ref = hello;
+
+	std::cout << "Memory address of the string: " << &hello << std::endl;
+	std::cout << "Memory address held by pointer: " << ptr << std::endl;
+	std::cout << "Memory address held by reference: " << &ref << std::endl;
+
+	std::cout << "Value of the string: " << hello << std::endl;
+	std::cout << "Value pointed to by pointer: " << *ptr << std::endl;
+	std::cout << "Value pointed to by reference: " << ref << std::endl;
+
 	return (0);
 }
