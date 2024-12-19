@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babreton <babreton@student.42perpignan.fr> +#+  +:+       +#+        */
+/*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 09:47:11 by babreton          #+#    #+#             */
-/*   Updated: 2023/08/16 09:52:36 by babreton         ###   ########.fr       */
+/*   Updated: 2024/12/19 18:18:38 by lkoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 
 typedef std::string str;
 
-class Harl {
+class Harl
+{
 	public:
 		Harl();
 		~Harl();

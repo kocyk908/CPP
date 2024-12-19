@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babreton <babreton@student.42perpignan.fr> +#+  +:+       +#+        */
+/*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:37:26 by babreton          #+#    #+#             */
-/*   Updated: 2023/08/15 17:14:44 by babreton         ###   ########.fr       */
+/*   Updated: 2024/12/19 18:17:57 by lkoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,21 @@
 
 typedef std::string str;
 
-void	getNewLine(str &line, str first, str second) {
+void	getNewLine(str &line, str first, str second)
+{
 	size_t	startPos = 0;
 
-	while ((startPos = line.find(first, startPos)) != str::npos) {
+	while ((startPos = line.find(first, startPos)) != str::npos)
+	{
 		line = line.substr(0, startPos) + second + line.substr(startPos + first.length());
 		startPos += second.length();
 	}
 }
 
-int	main(int ac, char **av) {
-	if (ac != 4) {
+int	main(int ac, char **av)
+{
+	if (ac != 4)
 		std::cout << "Usage : ./replace file_in string1 string2"; return 0;
-	}
 	
 	str				in_file = av[1];
 	str				first = av[2];
@@ -40,7 +42,8 @@ int	main(int ac, char **av) {
 	std::ifstream	input(in_file.c_str());
 	std::ofstream	output(out_file.c_str());
 	
-	if (input.is_open()) {
+	if (input.is_open())
+	{
 		while (std::getline(input, line)) {
 			getNewLine(line, first, second);
 			output << line;

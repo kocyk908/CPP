@@ -6,7 +6,7 @@
 /*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 11:45:34 by babreton          #+#    #+#             */
-/*   Updated: 2024/12/14 14:22:40 by lkoc             ###   ########.fr       */
+/*   Updated: 2024/12/19 18:17:05 by lkoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 #include <iostream>
 #include "Weapon.hpp"
 
-class HumanA {
+class HumanA
+{
 	public:
 		HumanA(str name, Weapon &weapon);
 		~HumanA();

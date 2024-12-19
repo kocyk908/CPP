@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babreton <babreton@student.42perpignan.fr> +#+  +:+       +#+        */
+/*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 11:45:33 by babreton          #+#    #+#             */
-/*   Updated: 2023/08/15 13:39:51 by babreton         ###   ########.fr       */
+/*   Updated: 2024/12/19 18:16:49 by lkoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 
 typedef std::string str;
 
-class Weapon {
+class Weapon
+{
 	public:
 		Weapon();
 		Weapon(str type);
