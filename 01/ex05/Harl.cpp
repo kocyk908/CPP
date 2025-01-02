@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 09:47:06 by babreton          #+#    #+#             */
-/*   Updated: 2024/12/19 18:18:28 by lkoc             ###   ########.fr       */
+/*   Created: 2023/08/15 11:45:37 by lkoc              #+#    #+#             */
+/*   Updated: 2025/01/03 00:24:06 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-Harl::Harl() {}
+Harl::Harl() 
+{
+}
 
-Harl::~Harl() {}
 
 void	Harl::debug() const
 {

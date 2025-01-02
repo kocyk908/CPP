@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/15 11:45:31 by babreton          #+#    #+#             */
-/*   Updated: 2024/12/19 18:16:32 by lkoc             ###   ########.fr       */
+/*   Created: 2023/08/15 11:45:37 by lkoc              #+#    #+#             */
+/*   Updated: 2025/01/03 00:22:39 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 
 HumanB::HumanB(str name) : name(name) 
 {
-}
-
-HumanB::~HumanB()
-{	
 }
 
 void	HumanB::attack() const

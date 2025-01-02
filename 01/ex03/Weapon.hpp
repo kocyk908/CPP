@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/15 11:45:33 by babreton          #+#    #+#             */
-/*   Updated: 2024/12/19 18:16:49 by lkoc             ###   ########.fr       */
+/*   Created: 2023/08/15 11:45:37 by lkoc              #+#    #+#             */
+/*   Updated: 2025/01/03 00:23:08 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ class Weapon
 	public:
 		Weapon();
 		Weapon(str type);
-		~Weapon();
 
 		const str	&getType() const;
 		void		setType(str ntype);
