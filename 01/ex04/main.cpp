@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 11:45:37 by lkoc              #+#    #+#             */
-/*   Updated: 2025/01/03 00:15:34 by marvin           ###   ########.fr       */
+/*   Updated: 2025/01/04 12:41:49 by lkoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ int	main(int ac, char **av)
 	}	
 	else
 	{
-		str				in_file = av[1];
-		str				first = av[2];
-		str				second = av[3];
-		str				line;
-		str				out_file = in_file + ".replace";
+		str	in_file = av[1];
+		str	first = av[2];
+		str	second = av[3];
+		str	line;
+		str	out_file = in_file + ".replace";
 
 		std::ifstream	input(in_file.c_str());
 		std::ofstream	output(out_file.c_str());

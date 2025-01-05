@@ -5,28 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/15 11:45:37 by lkoc              #+#    #+#             */
-/*   Updated: 2025/01/04 13:54:07 by lkoc             ###   ########.fr       */
+/*   Created: 2025/01/05 14:19:21 by lkoc              #+#    #+#             */
+/*   Updated: 2025/01/05 14:23:41 by lkoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
+#include "Fixed.hpp"
 
-int main()
+int main(void)
 {
-	std::string hello = "HI THIS IS BRAIN";
-
-	std::string *ptr = &hello;
-	std::string &ref = hello;
-
-	std::cout << "Memory address of the string: " << &hello << std::endl;
-	std::cout << "Memory address held by pointer: " << ptr << std::endl;
-	std::cout << "Memory address held by reference: " << &ref << std::endl;
-
-	std::cout << "Value of the string: " << hello << std::endl;
-	std::cout << "Value pointed to by pointer: " << *ptr << std::endl;
-	std::cout << "Value pointed to by reference: " << ref << std::endl;
-
+	Fixed a;
+	Fixed const b(10);
+	Fixed const c(42.42f);
+	Fixed const d(b);
+	
+	a = Fixed(1234.4321f);
+	
+	std::cout << "a is " << a << std::endl;
+	std::cout << "b is " << b << std::endl;
+	std::cout << "c is " << c << std::endl;
+	std::cout << "d is " << d << std::endl;
+	
+	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
+	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
+	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+	
 	return (0);
 }

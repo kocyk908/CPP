@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.hpp                                         :+:      :+:    :+:   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/15 11:45:37 by lkoc              #+#    #+#             */
-/*   Updated: 2025/01/04 13:03:08 by lkoc             ###   ########.fr       */
+/*   Created: 2025/01/05 14:19:17 by lkoc              #+#    #+#             */
+/*   Updated: 2025/01/05 14:26:24 by lkoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANB_H
-#define HUMANB_H
+#include "Fixed.hpp"
 
-#include <string>
-#include <iostream>
-#include "Weapon.hpp"
-
-class HumanB
+Fixed::Fixed()
 {
-	private:
-		str		name;
-		Weapon	*weapon;
+	this->value = 0;
+	std::cout << "Default constructor called" << std::endl;
+}
 
-	public:
-		HumanB(str name);
-		void	attack() const;
-		void	setWeapon(Weapon &weapon);
-};
+Fixed::~Fixed()
+{
+	std::cout << "Destructor called" << std::endl;
+}
 
-#endif
+int Fixed::toInt(void) const
+{
+	std::cout << "" << std::endl;
+}

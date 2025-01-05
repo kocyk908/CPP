@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 11:45:37 by lkoc              #+#    #+#             */
-/*   Updated: 2025/01/03 00:23:54 by marvin           ###   ########.fr       */
+/*   Updated: 2025/01/04 13:03:02 by lkoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,15 @@ typedef std::string str;
 
 class Harl
 {
+	private:
+		void	debug();
+		void	info();
+		void	warning();
+		void	error();
+	
 	public:
 		Harl();
-
 		void	complain(str level);
-
-	private:
-		void	debug() const;
-		void	info() const;
-		void	warning() const;
-		void	error() const;
 };
 
 #endif

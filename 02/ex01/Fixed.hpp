@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.hpp                                         :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/15 11:45:37 by lkoc              #+#    #+#             */
-/*   Updated: 2025/01/04 13:03:08 by lkoc             ###   ########.fr       */
+/*   Created: 2025/01/05 14:19:20 by lkoc              #+#    #+#             */
+/*   Updated: 2025/01/05 14:21:55 by lkoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANB_H
-#define HUMANB_H
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
-#include <string>
-#include <iostream>
-#include "Weapon.hpp"
+# include <iostream>
+# include <string>
 
-class HumanB
+class Fixed
 {
 	private:
-		str		name;
-		Weapon	*weapon;
-
+		
 	public:
-		HumanB(str name);
-		void	attack() const;
-		void	setWeapon(Weapon &weapon);
-};
+		Fixed();
+
+		~Fixed();
+		float toFloat(void) const;
+		int toInt(void) const;
+}
 
 #endif

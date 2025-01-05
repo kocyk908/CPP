@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 11:45:37 by lkoc              #+#    #+#             */
-/*   Updated: 2025/01/03 00:15:48 by marvin           ###   ########.fr       */
+/*   Updated: 2025/01/04 12:56:09 by lkoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ int	main()
 {
 	Harl	Harl;
 
-	Harl.complain("warning");
+	Harl.complain("info");
 	return 0;
 }
+
+//"debug"
+//"info"
+//"warning"
+//"error"
