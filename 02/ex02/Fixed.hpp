@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 14:19:17 by lkoc              #+#    #+#             */
-/*   Updated: 2025/01/06 18:29:50 by marvin           ###   ########.fr       */
+/*   Updated: 2025/01/08 17:08:21 by lkoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ class Fixed
 		Fixed	&operator ++ (void);  // ++i
 		Fixed	&operator -- (void); // --i
 
-		static Fixed &min(Fixed &a, Fixed &b);
-		static const Fixed &min(Fixed const &a, Fixed const &b);
+		static Fixed &min(Fixed &a, Fixed &b);					// can be modified after
+		static const Fixed &min(Fixed const &a, Fixed const &b);// remains constant
 		static Fixed &max(Fixed &a, Fixed &b);
 		static const Fixed &max(Fixed const &a, Fixed const &b);
 

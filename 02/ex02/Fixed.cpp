@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 14:19:17 by lkoc              #+#    #+#             */
-/*   Updated: 2025/01/06 18:52:24 by marvin           ###   ########.fr       */
+/*   Updated: 2025/01/08 17:30:05 by lkoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ Fixed::Fixed(const Fixed &other)
 	*this = other;
 }
 
-Fixed& Fixed::operator=(const Fixed &other)
+Fixed&	Fixed::operator=(const Fixed& other)
 {
 	//std::cout << "Copy assignment operator called" << std::endl;
-	this->value = other.getRawBits();
+	this->setRawBits(other.getRawBits());
 	return (*this);
 }
 
@@ -146,13 +146,13 @@ Fixed Fixed::operator / (const Fixed &other) const
 
 // increment decrement
 
-Fixed&	Fixed::operator ++()
+Fixed&	Fixed::operator ++() //pre
 {
 	this->value++;
 	return (*this);
 }
 
-Fixed	Fixed::operator ++(int)
+Fixed	Fixed::operator ++(int) //post
 {
 	Fixed	temp(*this);
 
@@ -190,14 +190,14 @@ const Fixed& Fixed::min(const Fixed &a, const Fixed &b)
 	return (b);
 }
 
-Fixed	&Fixed::max(Fixed &a, Fixed &b) // value can be changed
+Fixed	&Fixed::max(Fixed &a, Fixed &b)
 {
 	if (a > b)
 		return (a);
 	return (b);
 }
 
-const Fixed	&Fixed::max(const Fixed &a, const Fixed &b) //cant change value of const
+const Fixed	&Fixed::max(const Fixed &a, const Fixed &b)
 {
 	if (a > b)
 		return (a);
