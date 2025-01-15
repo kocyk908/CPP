@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:57:58 by lkoc              #+#    #+#             */
-/*   Updated: 2025/01/15 16:12:33 by lkoc             ###   ########.fr       */
+/*   Updated: 2025/01/15 22:33:45 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class FragTrap : public ClapTrap
 		// virtual for future changes in ScavTrap
 		~FragTrap();
 		
+		void attack(const std::string &target);
 		void highFivesGuys(void);
 };
 
