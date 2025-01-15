@@ -6,7 +6,7 @@
 /*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 14:19:17 by lkoc              #+#    #+#             */
-/*   Updated: 2025/01/11 18:53:11 by lkoc             ###   ########.fr       */
+/*   Updated: 2025/01/15 15:41:54 by lkoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 ClapTrap::ClapTrap(std::string name)
 {
 	this->name = name;
-	hit_points = 10;
-	energy_points = 10;
-	attack_damage = 0;
+	hit_points = 100;
+	energy_points = 50;
+	attack_damage = 20;
 	std::cout << "ClapTrap " << this->name << " created" << std::endl;
 }
 

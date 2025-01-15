@@ -6,7 +6,7 @@
 /*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 14:19:17 by lkoc              #+#    #+#             */
-/*   Updated: 2025/01/11 18:51:58 by lkoc             ###   ########.fr       */
+/*   Updated: 2025/01/15 15:55:24 by lkoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 
 int main(void)
 {
-	ClapTrap a("A");
-	ClapTrap b("B");
-	ScavTrap c("C");
-	ScavTrap d("D");
+	ScavTrap a("A");
+	ScavTrap b("B");
 
 	a.attack("B");
-	b.takeDamage(1);
+	b.takeDamage(35);
+	b.beRepaired(20);
+	b.guardGate();
+	a.attack("B");
+	b.takeDamage(100);
 	b.beRepaired(1);
-	c.attack("D");
-	d.guardGate();
 
-	
 	return (0);
 }
