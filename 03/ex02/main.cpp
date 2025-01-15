@@ -6,7 +6,7 @@
 /*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 14:19:17 by lkoc              #+#    #+#             */
-/*   Updated: 2025/01/15 16:05:14 by lkoc             ###   ########.fr       */
+/*   Updated: 2025/01/15 16:12:12 by lkoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 int main(void)
 {
-	ScavTrap a("A");
-	ScavTrap b("B");
+	FragTrap a("A");
+	FragTrap b("B");
 
 	a.attack("B");
 	b.takeDamage(35);
 	b.beRepaired(20);
-	b.guardGate();
 	a.attack("B");
 	b.takeDamage(100);
 	b.beRepaired(1);
