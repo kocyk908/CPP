@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:57:55 by lkoc              #+#    #+#             */
-/*   Updated: 2025/01/15 22:34:09 by marvin           ###   ########.fr       */
+/*   Updated: 2025/01/15 22:42:20 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,5 @@ void FragTrap::attack(const std::string &target)
 
 void FragTrap::highFivesGuys(void)
 {
-	std::cout << "FragTrap " << name << " requests a high five" << std::endl;
+	std::cout << "FragTrap " << name << " said 'WE DID IT, HIGH FIVE BRO!'" << std::endl;
 }
