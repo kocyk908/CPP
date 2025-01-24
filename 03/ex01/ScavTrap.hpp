@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkoc <lkoc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 14:19:17 by lkoc              #+#    #+#             */
-/*   Updated: 2025/01/15 15:48:54 by lkoc             ###   ########.fr       */
+/*   Updated: 2025/01/24 15:21:03 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class ScavTrap : public ClapTrap
 		// constructors and destructor are inherited from ClapTrap
 		ScavTrap(std::string name);
 		ScavTrap(const ScavTrap &other);
-		//ScavTrap &operator = (const ScavTrap &other);
+		ScavTrap &operator = (const ScavTrap &other);
 		~ScavTrap();
 
 		void attack(const std::string &target);
