@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/05 12:40:26 by lkoc              #+#    #+#             */
-/*   Updated: 2025/01/05 23:30:43 by marvin           ###   ########.fr       */
+/*   Created: 2025/01/05 14:19:17 by lkoc              #+#    #+#             */
+/*   Updated: 2025/01/26 22:26:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-#define FIXED_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 
-#include <iostream>
+# include "Animal.hpp"
+# include "Brain.hpp"
 
-class Fixed
+class Cat : public Animal
 {
 	private:
-		int value;
-		static const int bits = 8;
-
+		Brain* brain;
 	public:
-		Fixed();
-		Fixed(Fixed &other);
-		Fixed &operator = (Fixed &other);
-		~Fixed();
-		
-		int		getRawBits(void) const;
-		void	setRawBits(int const raw);
+		Cat();
+		Cat(const Cat &copy);
+		Cat &operator=(const Cat &copy);
+		virtual ~Cat();
+
+		virtual void makeSound() const;
 };
 
 #endif

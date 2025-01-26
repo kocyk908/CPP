@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/05 12:40:26 by lkoc              #+#    #+#             */
-/*   Updated: 2025/01/05 23:30:43 by marvin           ###   ########.fr       */
+/*   Created: 2025/01/05 14:19:17 by lkoc              #+#    #+#             */
+/*   Updated: 2025/01/26 22:00:41 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-#define FIXED_HPP
+#ifndef DOG_HPP
+# define DOG_HPP
 
-#include <iostream>
+# include "Animal.hpp"
 
-class Fixed
+class Dog : public Animal
 {
-	private:
-		int value;
-		static const int bits = 8;
-
 	public:
-		Fixed();
-		Fixed(Fixed &other);
-		Fixed &operator = (Fixed &other);
-		~Fixed();
-		
-		int		getRawBits(void) const;
-		void	setRawBits(int const raw);
+		Dog();
+		Dog(const Dog &copy);
+		Dog &operator=(const Dog &copy);
+		virtual ~Dog();
+
+		virtual void makeSound() const;
 };
 
 #endif
