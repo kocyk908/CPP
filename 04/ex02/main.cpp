@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 14:19:17 by lkoc              #+#    #+#             */
-/*   Updated: 2025/01/26 22:49:44 by marvin           ###   ########.fr       */
+/*   Updated: 2025/01/28 23:02:50 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,38 +21,24 @@
 
 #include <stdio.h>
 
-int main()
+int	main()
 {
-	printf("######## WrongAnimal tests\n");
-	WrongAnimal	*unknown = new WrongAnimal();
-	std::cout << unknown->getType() << " " << std::endl;
-	unknown->makeSound();
+	Animal	*array[100];
+	
+	int		i = 0;
 
-	printf("\n######## WrongCat tests\n");
-	WrongAnimal	*unknown2 = new WrongCat();
-	std::cout << unknown2->getType() << " " << std::endl;
-	unknown2->makeSound();
+	while (i < 50)
+		array[i++] = new Dog();
+	while (i < 100)
+		array[i++] = new Cat();
 
-	printf("\n######## Dog tests\n");
-	Animal		*dog = new Dog();
-	std::cout << dog->getType() << " " << std::endl;
-	dog->makeSound();
+	printf("\n\n###### Dogs and Cats are created\n\n");
+	array[10]->makeSound();
+	array[90]->makeSound();
 
-	printf("\n######## Animal tests\n");
-	Animal	*meta = new Animal();
-	std::cout << meta->getType() << " " << std::endl;
-	meta->makeSound();
-
-	printf("\n######## Cat tests\n");
-	Animal	*cat = new Cat();
-	std::cout << cat->getType() << " " << std::endl;
-	cat->makeSound();
-
-	printf("\n####### cleaning up\n");
-	delete meta;
-	delete cat;
-	delete dog;
-	delete unknown;
-	delete unknown2;
+	printf("\n\n###### Dogs and Cats are deleted\n\n");
+	for (i = 0; i < 100; i++)
+        delete array[i];
+		
 	return (0);
 }
