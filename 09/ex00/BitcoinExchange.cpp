@@ -33,17 +33,23 @@ BitcoinExchange::~BitcoinExchange()
 //	return (*this);
 //}
 
+const char *BitcoinExchange::CannotOpenFileException::what() const throw()
+{
+	return ("Error: could not open file.");
+}
+
+
 std::map<int, std::pair<std::string, std::string> > &BitcoinExchange::get_map()
 {
 	return (this->map);
 }
 
-bool isLeap(int year)
+bool BitcoinExchange::isLeap(int year)
 {
 	return (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0));
 }
 
-bool is_all_nums(std::string date)
+bool BitcoinExchange::is_all_nums(std::string date)
 {
 	int i = 0;
 	while (date[i])
@@ -58,7 +64,7 @@ bool is_all_nums(std::string date)
 }
 
 
-bool isValidValue(std::string s)
+bool BitcoinExchange::isValidValue(std::string s)
 {
 	size_t pos = s.find("|");
 
@@ -84,7 +90,7 @@ bool isValidValue(std::string s)
 	return (true);
 }
 
-bool isValidDate(std::string s)
+bool BitcoinExchange::isValidDate(std::string s)
 {
 	std::string delimiter = "-";
 	size_t pos1 = s.find(delimiter);
@@ -121,7 +127,7 @@ bool isValidDate(std::string s)
 	return true;
 }
 
-bool isValidInput(std::string s)
+bool BitcoinExchange::isValidInput(std::string s)
 {
 	if (s.find('|') == std::string::npos)
 	{
@@ -152,8 +158,7 @@ void BitcoinExchange::load_file(char *file_name)
 	
 	if (!file)
 	{
-		std::cout << "Error: could not open file." << std::endl;
-		return ;
+		throw CannotOpenFileException();
 	}
 
 	while (getline(file, input))

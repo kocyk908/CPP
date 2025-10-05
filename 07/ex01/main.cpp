@@ -30,4 +30,4 @@ int	main(void)
 	std::string strArr[] = {"hello", "world", "!"};
 	size = sizeof(strArr) / sizeof(strArr[0]);
 	::iter(strArr, size, printArrayElem<std::string>);
-}/
+}

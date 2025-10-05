@@ -20,5 +20,17 @@ class BitcoinExchange{
 		std::map<int, std::pair<std::string, std::string> >& get_map();
 
 		void load_file(char *file_name);
+
+		bool isValidInput(std::string s);
+		bool isValidDate(std::string s);
+		bool isValidValue(std::string s);
+		bool is_all_nums(std::string date);
+		bool isLeap(int year);
+
+		class CannotOpenFileException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
 };
 #endif

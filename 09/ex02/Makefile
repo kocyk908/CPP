@@ -1,17 +1,23 @@
 SRC = *.cpp
 
-NAME = easyfind
+NAME = PmergeMe
 
 CC = c++ -Wall -Wextra -Werror -std=c++98
 
+SRC = main.cpp PmergeMe.cpp
+OBJ = $(SRC:.cpp=.o)
+
 all: $(NAME)
 
-$(NAME): $(SRC)
-	$(CC) $(SRC) -o $(NAME)
+$(NAME): $(OBJ)
+	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
 
 clean:
-	rm -rf $(NAME)
+	$(RM) $(OBJ)
 
 fclean: clean
+	$(RM) $(NAME)
 
-re: fclean all
+re: fclean $(NAME)
+
+.PHONY: all clean fclean re
