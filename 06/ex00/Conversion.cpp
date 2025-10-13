@@ -1,4 +1,4 @@
-#include "conversion.hpp"
+#include "Conversion.hpp"
 
 Conv::Conv()
 {
@@ -180,7 +180,7 @@ void Conv::convert(const std::string &literal)
             else
                 std::cout << "char: " << "'" << static_cast<char>(d) << "'" << std::endl;
             std::cout << "int: " << "impossible" << std::endl;
-            std::cout << std::fixed << std::setprecision(1);
+            std::cout << std::defaultfloat << std::setprecision(6);
             std::cout << "float: " << static_cast<float>(d) << "f" << std::endl;
             std::cout << "double: " << d << std::endl;            
         }
@@ -192,9 +192,9 @@ void Conv::convert(const std::string &literal)
             else
                 std::cout << "char: " << "'" << static_cast<char>(i) << "'" << std::endl;
             std::cout << "int: " << i << std::endl;
-            std::cout << std::fixed << std::setprecision(1);
-            std::cout << "float: " << static_cast<float>(i) << "f" << std::endl;
-            std::cout << "double: " << static_cast<double>(i) << std::endl;
+            std::cout << std::defaultfloat << std::setprecision(6);
+            std::cout << "float: " << static_cast<float>(i) << ".0f" << std::endl;
+            std::cout << "double: " << static_cast<double>(i) << ".0" << std::endl;
         }
         return ;
     }
@@ -219,17 +219,28 @@ void Conv::convert(const std::string &literal)
             std::cout << "int: " << static_cast<int>(f) << std::endl;
         }
 
-        std::cout << std::fixed << std::setprecision(1);
-        std::cout << "float: " << f << "f" << std::endl;
-        std::cout << "double: " << static_cast<double>(f) << std::endl; 
+        std::cout << std::defaultfloat << std::setprecision(6);
+
+        if (literal[literal.size() - 2] == '.' || std::floor(f) == f)
+        {
+            std::cout << "float: " << f << ".0f" << std::endl;
+            std::cout << "double: " << static_cast<double>(f) << ".0" << std::endl; 
+        }   
+        else
+        {
+            std::cout << "float: " << f << "f" << std::endl;
+            std::cout << "double: " << static_cast<double>(f) << std::endl; 
+        }
         return ;
     }
 
     // double
     if (is_double(literal))
 	{
+        std::cout << "double\n";
         char *end = 0;
         double d = strtod(literal.c_str(), &end);
+
 
         if (static_cast<int>(d) < 32 || static_cast<int>(d) > 126)
             std::cout << "char: " << "Non displayable" << std::endl;
@@ -245,9 +256,18 @@ void Conv::convert(const std::string &literal)
             std::cout << "int: " << static_cast<int>(d) << std::endl;
         }
 
-        std::cout << std::fixed << std::setprecision(1);
-        std::cout << "float: " << static_cast<float>(d) << "f" << std::endl;
-        std::cout << "double: " << d << std::endl;
+        std::cout << std::defaultfloat << std::setprecision(6);
+
+        if (literal[literal.size() - 1] == '.' || std::floor(d) == d)
+        {
+            std::cout << "float: " << static_cast<float>(d) << ".0f" << std::endl;
+            std::cout << "double: " << d << ".0" << std::endl;
+        }   
+        else
+        {
+            std::cout << "float: " << static_cast<float>(d) << "f" << std::endl;
+            std::cout << "double: " << d << std::endl;
+        }
         return ;
     }
 

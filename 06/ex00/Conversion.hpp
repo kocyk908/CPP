@@ -6,6 +6,7 @@
 # include <cstdlib>
 # include <iomanip> 
 # include <climits>
+# include <cmath>
 
 class Conv
 {
