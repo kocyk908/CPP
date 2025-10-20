@@ -1,4 +1,4 @@
-NAME = 00
+NAME = whatever
 
 CC = c++ -Wall -Wextra -Werror -std=c++98
 
