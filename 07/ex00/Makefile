@@ -1,5 +1,3 @@
-SRC = *.cpp
-
 NAME = 00
 
 CC = c++ -Wall -Wextra -Werror -std=c++98

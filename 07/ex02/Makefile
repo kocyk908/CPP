@@ -1,5 +1,3 @@
-SRC = *.cpp
-
 NAME = array
 
 CC = c++ -Wall -Wextra -Werror -std=c++98

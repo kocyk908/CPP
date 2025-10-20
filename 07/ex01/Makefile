@@ -1,5 +1,3 @@
-SRC = *.cpp
-
 NAME = iter
 
 CC = c++ -Wall -Wextra -Werror -std=c++98
