@@ -11,7 +11,7 @@
 class PmergeMe{
 	private:
 		std::vector<int> _vct;
-		std::deque<int> _dqe;
+		std::deque<int> _deq;
 	public:
 		PmergeMe();
 		PmergeMe(char **args, int count);
@@ -21,18 +21,15 @@ class PmergeMe{
 		PmergeMe&	operator=(const PmergeMe& other);
 
 		std::vector<int> &get_vct();
-		std::deque<int> &get_dqe();
+		std::deque<int> &get_deq();
 		
 		time_t get_time_microseconds();
 
-		void merge_vct(std::vector<int> &vct, std::vector<int> rvct, std::vector<int> lvct);
-		void mergeSort_vct(std::vector<int> &vct);
-		void mergeSort_dqe(std::deque<int> &dqe);
-		void merge_dqe(std::deque<int> &dqe, std::deque<int> rdqe, std::deque<int> ldqe);
 		void mergeSort();
 
 };
-
+void 	merge_insert_vec(std::vector<int> &vct);
+void 	merge_insert_deq(std::deque<int> &deq);
 void print_vector(std::vector<int>& v);
 void print_deque(std::deque<int>& d);
 

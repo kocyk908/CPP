@@ -4,7 +4,7 @@ NAME = PmergeMe
 
 CC = c++ -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp PmergeMe.cpp
+SRC = main.cpp PmergeMe.cpp vector.cpp deque.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
