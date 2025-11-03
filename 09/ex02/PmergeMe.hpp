@@ -7,6 +7,7 @@
 # include <deque>
 # include <cstdlib>
 # include <sys/time.h>
+# include <ctime>
 
 class PmergeMe{
 	private:
@@ -28,6 +29,7 @@ class PmergeMe{
 		void mergeSort();
 
 };
+
 void 	merge_insert_vec(std::vector<int> &vct);
 void 	merge_insert_deq(std::deque<int> &deq);
 void print_vector(std::vector<int>& v);

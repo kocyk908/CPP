@@ -1,5 +1,4 @@
 #include "PmergeMe.hpp"
-#include <climits>
 
 PmergeMe::PmergeMe() : _vct(), _deq()
 {
@@ -79,25 +78,29 @@ time_t	PmergeMe::get_time_microseconds()
 	return (tv.tv_sec * 1000000 + tv.tv_usec);
 }
 
-void			PmergeMe::mergeSort(void)
+void	PmergeMe::mergeSort(void)
 {
-	time_t	v_start;
-	time_t	d_start;
-	time_t	v_end;
-	time_t	d_end;
-
-	std::cout << "Before:\n";
-	d_start = get_time_microseconds();
-	merge_insert_deq(_deq);
-	d_end = get_time_microseconds();
-	v_start = get_time_microseconds();
+	std::cout << "Before: 	";
+	print_deque(_deq);
+	
+	clock_t v_start = std::clock();
 	merge_insert_vec(_vct);
-	std::cout << "after: " << std::endl;
+	clock_t v_end = std::clock();
+	double us_v = static_cast<double>(v_end - v_start) * 1e6 /  CLOCKS_PER_SEC;
+	
+	clock_t d_start = std::clock();
+	merge_insert_deq(_deq);
+	clock_t d_end = std::clock();
+	double us_d = static_cast<double>(d_end - d_start) * 1e6 /  CLOCKS_PER_SEC;
+	
+
+	std::cout << "After [vector]: ";
 	print_vector(_vct);
-	v_end	 = get_time_microseconds();
-	std::cout << "After:\t";
+	std::cout << "After [deque]:  ";
+	print_deque(_deq);
+
 	std::cout << "Time to process a range of " << _vct.size();
-	std::cout << " elements with std::vector : " << (v_end - v_start) << " us" << std::endl;
+	std::cout << " elements with std::vector : " << us_v << " us" << std::endl;
 	std::cout << "Time to process a range of " << _deq.size();
-	std::cout << " elements with std::deque : " << (d_end - d_start) << " us" << std::endl;
+	std::cout << " elements with std::deque  : " << us_d << " us" << std::endl;
 }
