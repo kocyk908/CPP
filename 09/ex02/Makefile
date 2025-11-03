@@ -1,23 +1,26 @@
-SRC = *.cpp
+NAME       = PmergeMe
 
-NAME = PmergeMe
+CPP        = c++
+CPPFLAGS   = -Wall -Wextra -Werror -std=c++98 -O3 -march=native -DNDEBUG -pipe -flto
+LDFLAGS    = -flto
 
-CC = c++ -Wall -Wextra -Werror -std=c++98
-
-SRC = main.cpp PmergeMe.cpp vector.cpp deque.cpp
-OBJ = $(SRC:.cpp=.o)
+SRC        = main.cpp PmergeMe.cpp vector.cpp deque.cpp
+OBJ        = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
+	@$(CPP) $(CPPFLAGS) $(LDFLAGS) $(OBJ) -o $(NAME)
+
+%.o: %.cpp
+	@$(CPP) $(CPPFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJ)
+	@$(RM) $(OBJ)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
-re: fclean $(NAME)
+re: fclean all
 
 .PHONY: all clean fclean re
