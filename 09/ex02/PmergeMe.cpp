@@ -12,18 +12,23 @@ PmergeMe::~PmergeMe()
 
 PmergeMe::PmergeMe(char **args, int count)
 {
+	if (count < 1)
+	{
+		std::cerr << "Error: no arguments" << std::endl;
+		exit(1);
+	}
 	for (int i = 0; i < count; i++)
 	{
 		if (args[i][0] == '\0')
 		{
-			std::cerr << "Error" << std::endl;
+			std::cerr << "Error: empty argument" << std::endl;
 			exit(1);
-		}	
+		}
 		for (int j = 0; args[i][j]; j++)
 		{
-			if (isdigit(args[i][j]) == false || (int)args[i][0] <= 0)
+			if (isdigit(args[i][j]) == false || std::atoi(args[i]) <= 0)
 			{
-				std::cerr << "Error" << std::endl;
+				std::cerr << "Error: (" << args[i] << ") is not a positive integer" << std::endl;
 				exit(1);
 			}
 		}	
