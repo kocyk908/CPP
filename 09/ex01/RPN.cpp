@@ -11,78 +11,92 @@ RPN::~RPN()
 
 }
 
-//RPN::RPN(const RPN &other)
-//{
-//	*this = other;
-//}
+RPN::RPN(RPN const &other)
+{
+	if (this != &other)
+		*this = other;
+}
 
-//RPN	&RPN::operator=(const RPN &other)
-//{
-//	if (this != &other)
-//	{
-//		this->map = other.map;
-//	}
-//	return (*this);
-//}
+RPN &RPN::operator=(RPN const &other)
+{
+	if (this != &other)
+		this->st = other.st;
+	return (*this);
+}
 
 const char *RPN::NotEnoughValuesException::what() const throw()
 {
 	return ("Error: not enough values in the stack");
 }
 
+const char *RPN::TooManyValuesException::what() const throw()
+{
+	return ("Error: too many values in the stack");
+}
+
+const char *RPN::DevideByZeroException::what() const throw()
+{
+	return ("Error: devided by 0");
+}
+
+const char *RPN::InvalidCharacterException::what() const throw()
+{
+	return ("Error: invalid character in the expression");
+}
+
+
 
 void RPN::load_expression(std::string expression)
 {
-	std::stack<int> st;
 	int a;
 	int b;
 
 	for (size_t i = 0; i < expression.length(); i++)
 	{
 		if (isdigit(expression[i]))
-			st.push(expression[i] - '0');
+			this->st.push(expression[i] - '0');
 		else if (expression[i] == '+' || expression[i] == '-' || expression[i] == '*' || expression[i] == '/')
 		{
-			if (st.size() < 2)
+			if (this->st.size() < 2)
 			{
 				throw NotEnoughValuesException();
 			}
-			b = st.top();
-			st.pop();
-			a = st.top();
-			st.pop();
+			b = this->st.top();
+			this->st.pop();
+			a = this->st.top();
+			this->st.pop();
 
-			std::cout << "Applying operator " << expression[i] << " on " << a << " and " << b << std::endl;
+			// std::cout << "Applying operator " << expression[i] << " on " << a << " and " << b << std::endl;
 			
 			if (expression[i] == '+')
 			{
-				st.push(a + b);
+				this->st.push(a + b);
 			}
 			else if (expression[i] == '-')
 			{
-				st.push(a - b);
+				this->st.push(a - b);
 			}
 			else if (expression[i] == '*')
 			{
-				st.push(a * b);
+				this->st.push(a * b);
 			}
 			else if (expression[i] == '/')
 			{
 				if (b == 0)
 				{
-					throw std::runtime_error("Error: devided by 0");
+					throw DevideByZeroException();
 				}
-				st.push(a / b);
+				this->st.push(a / b);
 			}
 		}
 		else if (!isspace(expression[i]))
 		{
-			throw std::runtime_error("Error: invalid character");
+			throw InvalidCharacterException();
 		}
 	}
-	if (st.size() != 1)
+	if (this->st.size() != 1)
 	{
-		throw std::runtime_error("Error: too many values in the stack");
+		throw TooManyValuesException();
 	}
-	std::cout << st.top() << std::endl;
+	std::cout << this->st.top() << std::endl;
 }
