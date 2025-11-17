@@ -1,4 +1,7 @@
 #include "BitcoinExchange.hpp"
+#include <iomanip>
+#include <cstdlib>
+#include <cctype>
 
 BitcoinExchange::BitcoinExchange()
 {
@@ -18,20 +21,24 @@ BitcoinExchange::BitcoinExchange()
 	dbase.close();
 }
 
-//BitcoinExchange::BitcoinExchange(const BitcoinExchange &other)
-//{
-//	this
-//}
 
 BitcoinExchange::~BitcoinExchange()
 {
 
 }
 
-//BitcoinExchange	&BitcoinExchange::operator=(const BitcoinExchange &other)
-//{
-//	return (*this);
-//}
+BitcoinExchange::BitcoinExchange(BitcoinExchange const &other)
+{
+	if (this != &other)
+		*this = other;
+}
+
+BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &other)
+{
+	if (this != &other)
+		this->map = other.map;
+	return (*this);
+}
 
 const char *BitcoinExchange::CannotOpenFileException::what() const throw()
 {
@@ -76,17 +83,18 @@ bool BitcoinExchange::isValidValue(std::string s)
 		std::cout << "Error: no value found  			=> '" << s << "'" << std::endl;
 		return (false);
 	} 
-	float value = atof(value_str.c_str());
+	char *endptr = 0;
+    double value = std::strtod(value_str.c_str(), &endptr);
 	if (value < 0)
 	{
 		std::cout << "Error: not a positive number  		=> " << value << std::endl;
 		return (false);
 	}
-	if (value > 1000)
-	{
-		std::cout << "Error: value over 1000 			=> " << value << std::endl;
-		return (false);
-	}
+		if (value > 1000)
+		{
+			std::cout << "Error: value over 1000\t=> " << value_str << std::endl;
+			return (false);
+		}
 	return (true);
 }
 
@@ -101,7 +109,6 @@ bool BitcoinExchange::isValidDate(std::string s)
 	std::string year = s.substr(0, pos1);
 	std::string month = s.substr(pos1 + 1, pos2 - pos1 - 1);
 	std::string day = s.substr(pos2 + 1, pos_pipe - pos2-1);
-	// Usuń białe znaki z końca day (kompatybilnie z C++98)
 	while (!day.empty() && isspace(day[day.length() - 1]))
 		day.erase(day.length() - 1, 1);
 	if (year.length() != 4 || month.length() != 2 || day.length() != 2)
@@ -117,10 +124,8 @@ bool BitcoinExchange::isValidDate(std::string s)
 		return false;
 	if (d < 1 || d > 31)
 		return false;
-	// Luty
 	if (m == 2)
 		return isLeap(y) ? (d <= 29) : (d <= 28);
-	// Kwiecień, czerwiec, wrzesień, listopad
 	if (m == 4 || m == 6 || m == 9 || m == 11)
 		return (d <= 30);
 
@@ -131,12 +136,12 @@ bool BitcoinExchange::isValidInput(std::string s)
 {
 	if (s.find('|') == std::string::npos)
 	{
-		std::cout << "Error: bad input 			=> "<< s << "\n";
+		std::cout << "Error: bad input 			=> "<< s << std::endl;
 		return (false);
 	}
 	if (!isValidDate(s))
 	{
-		std::cout << "Error: not a valid date 		=> " << s << "\n";
+		std::cout << "Error: not a valid date 		=> " << s << std::endl;
 		return (false);
 	}
 	if (!isValidValue(s))
@@ -154,7 +159,7 @@ void BitcoinExchange::load_file(char *file_name)
 	std::string value;
 	size_t pos_pipe;
 	int header = 0;
-	float val_num;
+	double val_num;
 	
 	if (!file)
 	{
@@ -177,7 +182,8 @@ void BitcoinExchange::load_file(char *file_name)
 		date = input.substr(0, pos_pipe);
 		value = input.substr(pos_pipe + 1, input.length()-pos_pipe-1);
 
-		val_num = atof(value.c_str());
+		char *endptr = 0;
+    	val_num = std::strtod(value.c_str(), &endptr);
 		std::map<int, std::pair<std::string, std::string> >::const_iterator it = map.begin();
 		it++;
 	    while (it != map.end() && date > it->second.first)
@@ -187,11 +193,11 @@ void BitcoinExchange::load_file(char *file_name)
 		it--;
 		if (it == map.begin())
 		{
-			std::cout << "Error: no records before this date 	=> "<< date << "\n";
+			std::cout << "Error: no records before this date 	=> "<< date << std::endl;
 			continue;
 		}
 		else
-			std::cout << date << "=> " << val_num << " = " << val_num * atof(it->second.first.c_str()) << "\n";
+			std::cout << date << "=> " << val_num << " = " << val_num * std::strtod(it->second.second.c_str(), &endptr) << std::endl;
 	}
 	return ;
 }

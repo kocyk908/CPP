@@ -7,15 +7,6 @@ int main(int ac, char** av)
 
 	try
 	{
-		bitcoin.load_file(av[2]);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-
-	try
-	{
 		bitcoin.load_file(av[1]);
 	}
 	catch(const std::exception& e)
