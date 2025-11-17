@@ -3,10 +3,9 @@
 int main(int ac, char** av)
 {
 	(void)ac;
-	BitcoinExchange bitcoin;
-
 	try
 	{
+		BitcoinExchange bitcoin;
 		bitcoin.load_file(av[1]);
 	}
 	catch(const std::exception& e)

@@ -27,10 +27,17 @@ class BitcoinExchange{
 		bool is_all_nums(std::string date);
 		bool isLeap(int year);
 
-		class CannotOpenFileException : public std::exception
+		class CannotOpenInputFileException : public std::exception
 		{
 			public:
 				virtual const char *what() const throw();
 		};
+
+		class CannotOpenDatabaseFileException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+
 };
 #endif

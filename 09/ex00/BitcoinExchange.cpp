@@ -3,11 +3,12 @@
 #include <cstdlib>
 #include <cctype>
 
+
 BitcoinExchange::BitcoinExchange()
 {
 	std::ifstream dbase("data.csv");
 	if (!dbase)
-		throw(std::string) "cannot open data base";
+		throw CannotOpenDatabaseFileException();
 	std::string line;
 	int count = 0;
 	std::string value;
@@ -40,9 +41,14 @@ BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &other)
 	return (*this);
 }
 
-const char *BitcoinExchange::CannotOpenFileException::what() const throw()
+const char *BitcoinExchange::CannotOpenInputFileException::what() const throw()
 {
-	return ("Error: could not open file.");
+	return ("Error: could not open input file.");
+}
+
+const char *BitcoinExchange::CannotOpenDatabaseFileException::what() const throw()
+{
+	return ("Error: could not open database file.");
 }
 
 
@@ -92,7 +98,7 @@ bool BitcoinExchange::isValidValue(std::string s)
 	}
 		if (value > 1000)
 		{
-			std::cout << "Error: value over 1000\t=> " << value_str << std::endl;
+			std::cout << "Error: value over 1000			=> " << value_str << std::endl;
 			return (false);
 		}
 	return (true);
@@ -134,6 +140,11 @@ bool BitcoinExchange::isValidDate(std::string s)
 
 bool BitcoinExchange::isValidInput(std::string s)
 {
+	if (s.empty())
+	{
+		std::cout << "Error: empty line 			=> "<< s << std::endl;
+		return (false);
+	}
 	if (s.find('|') == std::string::npos)
 	{
 		std::cout << "Error: bad input 			=> "<< s << std::endl;
@@ -151,6 +162,22 @@ bool BitcoinExchange::isValidInput(std::string s)
 	return true;
 }
 
+static std::string trim(const std::string& str)
+{
+    size_t start = 0;
+    while (start < str.size() && isspace(static_cast<unsigned char>(str[start])))
+        ++start;
+
+    if (start == str.size()) 
+        return "";
+
+    size_t end = str.size() - 1;
+    while (end > start && isspace(static_cast<unsigned char>(str[end])))
+        --end;
+
+    return str.substr(start, end - start + 1);
+}
+
 void BitcoinExchange::load_file(char *file_name)
 {
 	std::ifstream file(file_name);
@@ -158,26 +185,22 @@ void BitcoinExchange::load_file(char *file_name)
 	std::string date;
 	std::string value;
 	size_t pos_pipe;
-	int header = 0;
 	double val_num;
 	
 	if (!file)
 	{
-		throw CannotOpenFileException();
+		throw CannotOpenInputFileException();
 	}
+
+	if (!std::getline(file, input) || trim(input) != "date | value")
+		return(std::cout << "Header in input file is missing or incorrect" << std::endl, void());
 
 	while (getline(file, input))
 	{
-		if (header == 0)
-		{
-			header++;
-			continue;
-		}
-		if (input.empty() || !isValidInput(input))
+		if (!isValidInput(input))
 		{
 			continue;
 		}
-		
 		pos_pipe = input.find("|");
 		date = input.substr(0, pos_pipe);
 		value = input.substr(pos_pipe + 1, input.length()-pos_pipe-1);
