@@ -48,28 +48,28 @@ void	merge_insert_deq(std::deque<int> &deq)
 				j_curr = next;
             }
     	}
-		 for (std::size_t i = 0; i < pend.size(); i++)
-		 {
-		 	std::deque<int>::iterator pos = std::lower_bound(main.begin(), main.end(), pend[order[i]]);
-		 	//std::cout << "wstawiona liczba: [" << pend[order[i]] << "] ";
-		 	main.insert(pos, pend[order[i]]);
-		 }
-		//for (std::size_t t = 0; t < order.size(); ++t)
-		//{
-		//	const int x = pend[ order[t] ];
-		//	std::size_t lo = 0, hi = main.size();
-		//	while (lo < hi)
-		//	{
-		//		std::size_t mid = lo + (hi - lo) / 2;
-		//		if (main[mid] < x)
-		//			lo = mid + 1;
-		//		else
-		//			hi = mid;
-		//	}
-		//	main.insert(main.begin() + static_cast<std::ptrdiff_t>(lo), x);
-		//}
-	}
+		for (std::size_t i = 0; i < order.size(); ++i)
+		{
+			std::size_t value_id = order[i];
+			int value = pend[value_id];
 
+			size_t low = 0;
+			size_t high = main.size();
+			while (low < high)
+			{
+				size_t mid = low + (high - low) / 2;
+				if (value > main[mid])
+				{
+					low = mid + 1;
+				}
+				else
+				{
+					high = mid;
+				}
+			}
+			main.insert(main.begin() + static_cast<std::ptrdiff_t>(low), value);
+		}
+	}
 	deq.assign(main.begin(), main.end());
 
 }
