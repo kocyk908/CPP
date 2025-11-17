@@ -1,6 +1,5 @@
 #include "RPN.hpp"
 
-
 RPN::RPN()
 {
 
@@ -44,15 +43,34 @@ const char *RPN::InvalidCharacterException::what() const throw()
 	return ("Error: invalid character in the expression");
 }
 
+const char *RPN::WrongArgumentCountException::what() const throw()
+{
+	return ("Error: wrong number of arguments");
+}
 
+const char *RPN::MoreThanOneDigitNumberException::what() const throw()
+{
+	return ("Error: more than one digit number in the expression");
+}
 
-void RPN::load_expression(std::string expression)
+void RPN::load_expression(char** av)
 {
 	int a;
 	int b;
 
+	if (av[2])
+	{
+		throw WrongArgumentCountException();
+	}
+
+	std::string expression = av[1];
+
 	for (size_t i = 0; i < expression.length(); i++)
 	{
+		if (isdigit(expression[i]) && isdigit(expression[i + 1]))
+		{
+			throw MoreThanOneDigitNumberException();
+		}
 		if (isdigit(expression[i]))
 			this->st.push(expression[i] - '0');
 		else if (expression[i] == '+' || expression[i] == '-' || expression[i] == '*' || expression[i] == '/')

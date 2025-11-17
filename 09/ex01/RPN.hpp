@@ -16,7 +16,7 @@ class RPN{
 		~RPN();
 		RPN	&operator=(const RPN &other);
 
-		void load_expression(std::string expression);
+		void load_expression(char** av);
 
 
 		class NotEnoughValuesException : public std::exception
@@ -42,5 +42,18 @@ class RPN{
 			public:
 				virtual const char *what() const throw();
 		};
+
+		class WrongArgumentCountException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+
+		class MoreThanOneDigitNumberException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+
 };
 #endif

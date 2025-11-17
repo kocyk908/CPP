@@ -7,7 +7,7 @@ int main(int ac, char** av)
 
 	try
 	{
-		rpn.load_expression(av[1]);
+		rpn.load_expression(av);
 	}
 	catch(const std::exception& e)
 	{
